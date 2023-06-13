@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Averia Libre';
+    background-color: black;
+}
+
+.logo {
+    width: 400px;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+.linha-amarela {
+    height: 4.5px;
+    background-color: #C49C00;
+}
+
+main {
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+nav ul li {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #C49C00;
+    padding: 30px 30px;
+    background-color: black;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-family: 'Arial', sans-serif; /* Exemplo de fonte mais quadrada */
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.logoFooter {
+    width: 1000px;
+    height: 540px;
+    display:flex;
+    margin: auto;
+
+}
