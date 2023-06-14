@@ -15,6 +15,11 @@
     width: 300px;
 }
 
+a:visited,
+a:active {
+    outline: 2px solid yellow; /* Define a cor e a largura do contorno */
+}
+
 .linha-amarela {
     height: 4.5px;
     background-color: #D4AF37;
@@ -34,7 +39,7 @@ nav ul li a {
 }
 
 .logoFooter {
-    width: 1200px;
+    width: 1000px;
     height: 570px;
     display:flex;
     margin: auto;
