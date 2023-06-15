@@ -34,13 +34,10 @@ nav ul li a {
 }
 
 .MainSobre {
-    max-width: 700px;
+    max-width: 600px;
     margin: 0 auto;
-    border: 6px solid #D4AF37;
-    border-radius: 30px;
     margin-top: 10px;
     margin-bottom: 10px;
-
   }
 
 .sobre1,
@@ -48,25 +45,31 @@ nav ul li a {
 .sobre3 {
     text-decoration: none;
     color: black;
-    padding: 20px;
     font-family: 'Arial', sans-serif;
     font-weight: bold;
     font-size: 18px;
     text-align: center;
+    padding: 8px;
+}
+
+.imageSobre1{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .imageSobre {
-    width: 273px;
-    height: 273px;
-    display:flex;
-    margin: auto;
+    width: 250px;
+    height: 150px;
+    margin: 26px;
 }
 
 footer{
+    margin-top: 40px;
     font-family: 'Averia Libre';
     background-color: black;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     border: 10px solid black;
     height: 39px;
