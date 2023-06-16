@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+}
+
+.CabecalhoHome {
+    font-family: 'Averia Libre';
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid black;
+  }
+
+.logo {
+    width: 300px;
+}
+
+.linha-amarela {
+    height: 4.5px;
+    background-color: #D4AF37;
+}
+
+footer{
+    margin-top: 168px;
+    font-family: 'Averia Libre';
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 10px solid black;
+    height: 39px;
+}
+
+input{
+    display: flex;
+    margin: 10px;
+    width: 330px;
+    height: 20px;
+    font-family: 'Arial', sans-serif; 
+}
+
+.MainLogin {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif; 
+  }
+  
+  #lista-pedidos {
+    margin: 0 auto;
+    max-width: 900px;
+  }
+  
+  h2 {
+    display: flex;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse; 
+  }
+  
+  th {
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #CCCCCC;
+  }
+
+ td {
+    padding: 10px;
+    text-align: left;
+    text-align: center;
+    border: 1px solid #CCCCCC;
+  }
+  
+  thead {
+    background-color: #FFDB58;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #FFFFCC;
+  }
+  
+  tbody tr:hover {
+    background-color: #eaeaea;
+  }
+  
+  tfoot {
+    font-weight: bold;
+  }
