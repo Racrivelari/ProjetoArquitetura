@@ -39,7 +39,7 @@ router.get('/novoCliente', (req, res) => {
       if (user) {
         res.redirect('/pedidos');
       } else {
-        res.send('Email ou senha inválidos');
+        res.status(400).json({ error: 'Email ou senha inválidos' });
       }
     } catch (error) {
       console.error(error);
