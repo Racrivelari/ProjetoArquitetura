@@ -6,34 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetroNaka</title>
     <link rel="stylesheet" type="text/css" media="screen" href="../stylesheet/pedidos.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
-    <script src="../javascripts/List.js"></script>
 </head>
-<script>
-    const options = {
-        valueNames: ["usina", "produto"]
-    };
-
-    const pedidoList = new List("lista-pedidos", options);
-
-    const buscarInput = document.getElementById("buscar");
-    buscarInput.addEventListener("input", function () {
-        const searchString = this.value.toLowerCase();
-        pedidoList.search(searchString);
-        console.log("teste")
-        const pedidos = document.getElementsByClassName("pedido");
-        for (const pedido of pedidos) {
-            const usina = pedido.querySelector(".usina").innerText.toLowerCase();
-            const produto = pedido.querySelector(".produto").innerText.toLowerCase();
-            if (usina.includes(searchString) || produto.includes(searchString)) {
-                pedido.style.display = "table-row";
-            } else {
-                pedido.style.display = "none";
-            }
-        }
-    });
-
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
 
 <body>
     <header class="CabecalhoHome">
@@ -47,7 +21,7 @@
     <main class="MainLogin">
         <section id="lista-pedidos">
             <h2>Lista de Pedidos</h2>
-            <input type="text" id="buscar" placeholder="Buscar por usina ou produto">
+            <input type="text" id="buscar" placeholder="Buscar por pedido">
             <table>
                 <thead>
                     <tr>
@@ -63,11 +37,12 @@
                     {{#pedidos}}
                     <tr class="pedido">
                         <td>{{_id}}</td>
-                        <td>{{usina}}</td>
-                        <td>{{produto}}</td>
+                        <td class="usina">{{usina}}</td>
+                        <td class="produto">{{produto}}</td>
                         <td>{{quantidade}}</td>
                         <td>{{preco}}</td>
                         <td>{{destino}}</td>
+                        <td><button class="btn-excluir" onclick="excluirPedido('{{_id}}')">excluir</button></td>
                     </tr>
                     {{/pedidos}}
                 </tbody>
@@ -82,8 +57,28 @@
     <footer>
         <div></div>
     </footer>
+    <script src="../javascripts/pedidos.js"></script>
+    <script>
+        const buscarInput = document.getElementById("buscar");
+        const tabelaPedidos = document.getElementById("tabela-pedidos");
+        const rows = tabelaPedidos.getElementsByTagName("tr");
 
+        buscarInput.addEventListener("input", function () {
+            const searchString = this.value.toLowerCase();
 
+            for (const row of rows) {
+                const usina = row.querySelector(".usina").textContent.toLowerCase();
+                const produto = row.querySelector(".produto").textContent.toLowerCase();
+
+                if (usina.includes(searchString) || produto.includes(searchString)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        });
+        
+    </script>
 </body>
 
 </html>
