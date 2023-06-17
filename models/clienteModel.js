@@ -1,6 +1,7 @@
 class ClienteDAO {
     constructor(connection) {
         this.connection = connection;
+        this.collection = this.connection.database.collection("clientes");
     }
 
     async createCliente(cliente) {

@@ -12,7 +12,7 @@ class DBConnection {
     try {
       await this.client.connect();
       this.database = this.client.db("Arquitetura-de-Software");
-      this.collection = this.database.collection("sua-colecao");
+      this.collection = this.database.collection("sample_mflix");
       console.log("Conexão estabelecida com o MongoDB");
     } catch (error) {
       console.error("Erro ao conectar ao MongoDB:", error);
