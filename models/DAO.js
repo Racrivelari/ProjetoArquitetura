@@ -11,7 +11,7 @@ class DBConnection {
   async connect() {
     try {
       await this.client.connect();
-      this.database = this.client.db("seu-banco-de-dados");
+      this.database = this.client.db("Arquitetura-de-Software");
       this.collection = this.database.collection("sua-colecao");
       console.log("Conexão estabelecida com o MongoDB");
     } catch (error) {

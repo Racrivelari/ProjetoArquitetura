@@ -67,6 +67,15 @@ router.get('/contato', (req, res) => {
   res.render('contato');
 });
 
+router.get('/pedidos', (req, res) => {
+  res.render('pedidos');
+});
+
+router.get('/novoPedido', (req, res) => {
+  res.render('novoPedido');
+});
+
+
 router.post('/pedidos', (req, res) => {
   // Extrair os dados do corpo da requisição
   const { usina, produto, quantidade, preco, destino } = req.body;
@@ -86,6 +95,7 @@ router.post('/pedidos', (req, res) => {
     .then(() => {
       // Pedido cadastrado com sucesso
       res.status(201).json({ message: 'Pedido cadastrado com sucesso.' });
+      res.render('pedidos');
     })
     .catch((error) => {
       // Ocorreu um erro ao cadastrar o pedido
