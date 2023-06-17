@@ -18,6 +18,7 @@ class PedidoModel {
         try {
             const pedidos = await this.collection.find().toArray();
             console.log('Pedidos encontrados:', pedidos);
+            return(pedidos)
         } catch (error) {
             console.error('Erro ao ler os pedidos:', error);
         }

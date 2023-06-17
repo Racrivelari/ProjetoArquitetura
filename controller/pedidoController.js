@@ -21,7 +21,7 @@ class PedidoController {
         try {
             await this.connection.connect();
             this.model = new PedidoModel(this.connection);
-            await this.model.readPedidos();
+            return(await this.model.readPedidos());
         } finally {
             this.connection.close();
         }

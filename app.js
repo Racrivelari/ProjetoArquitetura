@@ -24,8 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/', routes);
 
 app.use('/', routes);
-app.use('/products', produtosRoute);
-app.use('/orders', pedidosRoute);
+app.use('/produtos', produtosRoute);
+app.use('/pedidos', pedidosRoute);
 app.use('/login', clientesRoute);
 
 

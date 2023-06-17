@@ -6,7 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetroNaka</title>
     <link rel="stylesheet" type="text/css" media="screen" href="../stylesheet/pedidos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+    <script src="../javascripts/List.js"></script>
 </head>
+<script>
+    const options = {
+        valueNames: ["usina", "produto"]
+    };
+
+    const pedidoList = new List("lista-pedidos", options);
+
+    const buscarInput = document.getElementById("buscar");
+    buscarInput.addEventListener("input", function () {
+        const searchString = this.value.toLowerCase();
+        pedidoList.search(searchString);
+        console.log("teste")
+        const pedidos = document.getElementsByClassName("pedido");
+        for (const pedido of pedidos) {
+            const usina = pedido.querySelector(".usina").innerText.toLowerCase();
+            const produto = pedido.querySelector(".produto").innerText.toLowerCase();
+            if (usina.includes(searchString) || produto.includes(searchString)) {
+                pedido.style.display = "table-row";
+            } else {
+                pedido.style.display = "none";
+            }
+        }
+    });
+
+</script>
 
 <body>
     <header class="CabecalhoHome">
@@ -20,7 +47,7 @@
     <main class="MainLogin">
         <section id="lista-pedidos">
             <h2>Lista de Pedidos</h2>
-            <input type="text" id="buscar" placeholder="Buscar por pedido">
+            <input type="text" id="buscar" placeholder="Buscar por usina ou produto">
             <table>
                 <thead>
                     <tr>
@@ -32,67 +59,31 @@
                         <th>Destino</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Usina A</td>
-                        <td>Produto A</td>
-                        <td>10</td>
-                        <td>R$ 100,00</td>
-                        <td>Destino A</td>
+                <tbody id="tabela-pedidos">
+                    {{#pedidos}}
+                    <tr class="pedido">
+                        <td>{{_id}}</td>
+                        <td>{{usina}}</td>
+                        <td>{{produto}}</td>
+                        <td>{{quantidade}}</td>
+                        <td>{{preco}}</td>
+                        <td>{{destino}}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Usina B</td>
-                        <td>Produto B</td>
-                        <td>5</td>
-                        <td>R$ 50,00</td>
-                        <td>Destino B</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Usina C</td>
-                        <td>Produto C</td>
-                        <td>8</td>
-                        <td>R$ 80,00</td>
-                        <td>Destino C</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Usina D</td>
-                        <td>Produto D</td>
-                        <td>8</td>
-                        <td>R$ 80,00</td>
-                        <td>Destino D</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Usina E</td>
-                        <td>Produto E</td>
-                        <td>8</td>
-                        <td>R$ 80,00</td>
-                        <td>Destino E</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Usina F</td>
-                        <td>Produto F</td>
-                        <td>8</td>
-                        <td>R$ 80,00</td>
-                        <td>Destino F</td>
-                    </tr>
+                    {{/pedidos}}
                 </tbody>
             </table>
         </section>
-         <form action="/novoPedido" method="GET">
-            <button type="submit">Novo pedido</button> 
+        <form action="/pedidos/novoPedido" method="GET">
+            <button type="submit">Novo pedido</button>
         </form>
-        
+
     </main>
 
     <footer>
         <div></div>
     </footer>
+
+
 </body>
 
 </html>

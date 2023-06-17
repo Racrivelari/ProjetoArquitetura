@@ -31,8 +31,8 @@ router.get('/', (req, res) => {
     pedidoController.createPedido(novoPedido)
       .then(() => {
         // Pedido cadastrado com sucesso
-        res.status(201).json({ message: 'Pedido cadastrado com sucesso.' });
-        res.render('pedidos');
+        // res.status(201).json({ message: 'Pedido cadastrado com sucesso.' });
+        res.render('/pedidos');
       })
       .catch((error) => {
         // Ocorreu um erro ao cadastrar o pedido
