@@ -33,9 +33,10 @@ class PedidoModel {
         }
     }
 
-    async deletePedido(filter) {
+    async deletePedido(pedidoId) {
         try {
-            const result = await this.collection.deleteOne(filter);
+            const result = await this.collection.deleteOne({ _id: pedidoId });
+            console.log(pedidoId)
             console.log('Pedido removido:', result.deletedCount);
         } catch (error) {
             console.error('Erro ao remover o pedido:', error);
