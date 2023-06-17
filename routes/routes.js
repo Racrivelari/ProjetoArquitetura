@@ -1,28 +1,68 @@
 const express = require('express');
 const router = express.Router();
 
+//envio de email
+require('dotenv').config();
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD
+  },
+  tls:{
+    rejectUnauthorized: false
+  }
+});
+
+
+router.post('/email', (req, res) => {   
+    
+    const { email, nome, assunto, mensagem } = req.body;
+    
+    const options = {
+        from: email, 
+        to: 'petronakatanaka@gmail.com', 
+        subject: assunto,
+        text: `Nome: ${nome}\nEmail: ${email}\n\n${mensagem}`,
+    };
+
+    transporter.sendMail(options, (error, info) => {
+      if (error) {
+        console.log(error);
+        res.status(500).send('Erro ao enviar o e-mail.');
+      } else {
+        console.log('E-mail enviado: ' + info.response);
+        res.send('E-mail enviado com sucesso!');
+      }
+    });
+});
+
+//
+
 router.get('/', (req, res) => {
-  res.sendFile('home.html', { root: 'views' });
+  res.render('home')
 });
 
 router.get('/sobre', (req, res) => {
-  res.sendFile('sobre.html', { root: 'views' });
+  res.render('sobre')
 });
 
 router.get('/negocio', (req, res) => {
-  res.sendFile('negocio.html', { root: 'views' });
+  res.render('negocio')
 });
 
 router.get('/somos', (req, res) => {
-  res.sendFile('somos.html', { root: 'views' });
+  res.render('somos')
 });
 
 router.get('/cliente', (req, res) => {
-  res.sendFile('cliente.html', { root: 'views' });
+  res.render('cliente')
 });
 
 router.get('/contato', (req, res) => {
-  res.sendFile('contato.html', { root: 'views' });
+  res.render('contato');
 });
 
 module.exports = router;

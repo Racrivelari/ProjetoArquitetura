@@ -4,11 +4,18 @@ require('dotenv').config();
 var path = require('path');
 const port = process.env.PORT || 3000;
 
-// Configurar o diretório estático para servir arquivos HTML
-app.use(express.static('public'));
-app.set('views', path.join(__dirname, 'views'));
-// Importar o arquivo de rotas
+const mustacheExpress = require('mustache-express');
 const routes = require('./routes/routes.js');
+
+
+app.engine('mustache', mustacheExpress());
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'mustache');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Associar o roteador às rotas principais
 app.use('/', routes);
