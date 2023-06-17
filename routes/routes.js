@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const PedidoController = require('../controller/pedidoController');
-const pedidoController = new PedidoController();
 
 //envio de email
 require('dotenv').config();
+
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
@@ -59,8 +58,12 @@ router.get('/somos', (req, res) => {
   res.render('somos')
 });
 
-router.get('/cliente', (req, res) => {
-  res.render('cliente')
+router.get('/login', (req, res) => {
+  res.render('login')
+});
+
+router.get('/novaConta', (req, res) => {
+  res.render('novaConta')
 });
 
 router.get('/contato', (req, res) => {
@@ -69,38 +72,6 @@ router.get('/contato', (req, res) => {
 
 router.get('/pedidos', (req, res) => {
   res.render('pedidos');
-});
-
-router.get('/novoPedido', (req, res) => {
-  res.render('novoPedido');
-});
-
-
-router.post('/pedidos', (req, res) => {
-  // Extrair os dados do corpo da requisição
-  const { usina, produto, quantidade, preco, destino } = req.body;
-
-  // Criar o objeto de pedido com os dados recebidos
-  const novoPedido = {
-    usina,
-    produto,
-    quantidade,
-    preco,
-    destino,
-    timestamp: new Date().getTime(), // Adicionar o timestamp
-  };
-
-  // Chamar o método de criação de pedido no controlador
-  pedidoController.createPedido(novoPedido)
-    .then(() => {
-      // Pedido cadastrado com sucesso
-      res.status(201).json({ message: 'Pedido cadastrado com sucesso.' });
-      res.render('pedidos');
-    })
-    .catch((error) => {
-      // Ocorreu um erro ao cadastrar o pedido
-      res.status(500).json({ error: 'Ocorreu um erro ao cadastrar o pedido.' });
-    });
 });
 
 

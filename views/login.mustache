@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetroNaka</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheet/cliente.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheet/login.css" />
 </head>
 <body>
     <header class="CabecalhoHome">
@@ -17,7 +17,7 @@
                 <li><a href="/sobre">Sobre PetroNaka</a></li>
                 <li><a href="/negocio">Tecnologias</a></li>
                 <li><a href="/somos">Quem somos</a></li>
-                <li><a href="/cliente">Área do Cliente</a></li>
+                <li><a href="/login">Área do Cliente</a></li>
                 <li><a href="/contato">Contato</a></li>
             </ul>
         </nav>
@@ -28,7 +28,7 @@
     <main class="MainLogin">
         <section id="login">
             <h2>Login</h2>
-            <form action="/pedidos" method="GET">
+            <form action="/pedidos/" method="GET">
                 <div class="campo-formulario">
                     <label for="email">E-mail:</label>
                     <input type="email" id="email" name="email" >
@@ -38,8 +38,8 @@
                     <input type="password" id="senha" name="senha" >
                 </div>
                 <button type="submit">Entrar</button>
-                <a class ="criarConta" href="./novaConta">Criar conta</a>
             </form>
+            <a class ="criarConta" href="/novaConta">Criar conta</a>
         </section>
     </main>
 
