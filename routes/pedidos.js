@@ -23,6 +23,8 @@ router.delete('/:id', (req, res) => {
   pedidoController.deletePedido(teste)
     .then(() => {
       // Pedido excluído com sucesso
+      pedidoController.readPedidos()
+      res.render('pedidos', { pedidos });
       console.log("excluiuuuuuuuu")
     })
     .catch((error) => {
