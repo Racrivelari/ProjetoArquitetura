@@ -21,7 +21,7 @@ class ClienteController {
     try {
       await this.connection.connect();
       this.model = new ClienteModel(this.connection);
-      await this.model.readClientes();
+      return(await this.model.readClientes());
     } finally {
       this.connection.close();
     }
@@ -42,6 +42,16 @@ class ClienteController {
       await this.connection.connect();
       this.model = new ClienteModel(this.connection);
       await this.model.deleteCliente(filter);
+    } finally {
+      this.connection.close();
+    }
+  }
+
+  async findOne(query) {
+    try {
+      await this.connection.connect();
+      this.model = new ClienteModel(this.connection);
+      return await this.model.findOne(query);
     } finally {
       this.connection.close();
     }

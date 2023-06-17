@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
-//envio de email
 require('dotenv').config();
 
 const nodemailer = require('nodemailer');
+
 const PedidoController = require('../controller/pedidoController');
 const pedido = new PedidoController();
+
+
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -81,6 +83,5 @@ router.get('/pedidos', (req, res) => {
       res.status(500).json({ error: 'Ocorreu um erro ao obter a lista de pedidos.' });
     });
 });
-
 
 module.exports = router;
