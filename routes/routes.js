@@ -7,6 +7,9 @@ const nodemailer = require('nodemailer');
 const PedidoController = require('../controller/pedidoController');
 const pedido = new PedidoController();
 
+const ProdutoController = require('../controller/produtoController');
+const produto = new ProdutoController();
+
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -81,6 +84,18 @@ router.get('/pedidos', (req, res) => {
     .catch((error) => {
       // Ocorreu um erro ao obter a lista de pedidos
       res.status(500).json({ error: 'Ocorreu um erro ao obter a lista de pedidos.' });
+    });
+});
+
+router.get('/produtos', (req, res) => {
+  produto.readProdutos()
+    .then((produtos) => {
+      // Renderizar a página de listagem de produtos com os dados recebidos
+      res.render('produtos', { produtos });
+    })
+    .catch((error) => {
+      // Ocorreu um erro ao obter a lista de produtos
+      res.status(500).json({ error: 'Ocorreu um erro ao obter a lista de produtos.' });
     });
 });
 

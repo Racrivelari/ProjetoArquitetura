@@ -1,4 +1,4 @@
-const DBConnection = require('../models/dbConnection.js');
+const DBConnection = require('../models/DAO');
 const ProdutoModel = require('../models/produtoModel.js');
 
 class ProdutoController {
@@ -21,7 +21,7 @@ class ProdutoController {
     try {
       await this.connection.connect();
       this.model = new ProdutoModel(this.connection);
-      await this.model.readProdutos();
+      return(await this.model.readProdutos());
     } finally {
       this.connection.close();
     }

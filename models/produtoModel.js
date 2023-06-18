@@ -6,6 +6,7 @@ class ProdutoModel {
 
     async createProduto(produto) {
         try {
+            produto.timestamp = new Date(); // Adiciona o timestamp atual
             const result = await this.collection.insertOne(produto);
             console.log('Produto criado:', result.insertedId);
         } catch (error) {
@@ -17,6 +18,7 @@ class ProdutoModel {
         try {
             const produtos = await this.collection.find().toArray();
             console.log('Produtos encontrados:', produtos);
+            return(produtos)
         } catch (error) {
             console.error('Erro ao ler os produtos:', error);
         }
@@ -31,9 +33,9 @@ class ProdutoModel {
         }
     }
 
-    async deleteProduto(filter) {
+    async deleteProduto(produtoId) {
         try {
-            const result = await this.collection.deleteOne(filter);
+            const result = await this.collection.deleteOne({ _id: produtoId });
             console.log('Produto removido:', result.deletedCount);
         } catch (error) {
             console.error('Erro ao remover o produto:', error);

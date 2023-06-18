@@ -37,7 +37,8 @@ router.get('/novoCliente', (req, res) => {
       console.log(user);
   
       if (user) {
-        res.redirect('/pedidos');
+        res.redirect('/produtos');
+        // res.redirect('/pedidos');
       } else {
         res.status(400).json({ error: 'Email ou senha inválidos' });
       }
