@@ -29,7 +29,7 @@ router.post('/email', (req, res) => {
     
     const options = {
         from: email, 
-        to: 'petronakatanaka@gmail.com', 
+        to: process.env.EMAIL, 
         subject: assunto,
         text: `Nome: ${nome}\nEmail: ${email}\n\n${mensagem}`,
     };
