@@ -7,10 +7,11 @@
     <title>PetroNaka</title>
     <link rel="stylesheet" type="text/css" media="screen" href="../stylesheet/pedidos.css" />
 </head>
-<script src="../javascripts/pedidos.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.min.js"></script>
+<script src="../javascripts/pedidos.js"></script>
 
 <body>
     <header class="CabecalhoHome">
@@ -50,7 +51,7 @@
                     {{/pedidos}}
                 </tbody>
             </table>
-            <button id="btn-extrair-pdf" class="btn-extrair-pdf">Extrair PDF</button>
+            <button id="btn-extrair-pdf" class="btn-extrair-pdf" onclick="exportToPdf()">Extrair PDF</button>
 
         </section>
         <form action="/pedidos/novoPedido" method="GET">
@@ -62,85 +63,7 @@
     <footer>
         <div></div>
     </footer>
-    <script src="../javascripts/pedidos.js"></script>
 
-    <script>
-        const buscarInput = document.getElementById("buscar");
-        const tabelaPedidos = document.getElementById("tabela-pedidos");
-        const rows = tabelaPedidos.getElementsByTagName("tr");
-
-        buscarInput.addEventListener("input", function () {
-            const searchString = this.value.toLowerCase();
-
-            for (const row of rows) {
-                const usina = row.querySelector(".usina").textContent.toLowerCase();
-                const produto = row.querySelector(".produto").textContent.toLowerCase();
-
-                if (usina.includes(searchString) || produto.includes(searchString)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
-            }
-        });
-
-        document.getElementById("btn-extrair-pdf").addEventListener("click", () => {
-            const tabelaPedidos = document.getElementById("tabela-pedidos");
-            const rows = tabelaPedidos.getElementsByTagName("tr");
-
-            // Cria um novo documento PDF
-            const doc = new window.jspdf.jsPDF();
-
-            // Define a posição inicial do conteúdo no PDF
-            let y = 20;
-
-            // Cria um array para armazenar os dados das células
-            const tableData = [];
-
-            // Itera sobre cada linha da tabela
-            for (const row of rows) {
-                const cells = row.getElementsByTagName("td");
-                let includeCell = true;
-                const rowData = [];
-
-                for (let i = 0; i < cells.length - 1; i++) {
-                    const cell = cells[i];
-                    const cellText = cell.textContent.trim();
-                    rowData.push(cellText);
-                }
-
-                if (includeCell) {
-                    tableData.push(rowData);
-                }
-            }
-
-            // Define a largura das colunas
-            const columnWidths = [30, 30, 30, 30, 30, 30];
-
-            // Gera a tabela no PDF
-            doc.autoTable({
-                startY: y,
-                head: [["Número Pedido", "Nome da Usina", "Nome do Produto", "Quantidade", "Preço", "Destino"]],
-                body: tableData,
-                columnStyles: {
-                    0: { cellWidth: columnWidths[0] },
-                    1: { cellWidth: columnWidths[1] },
-                    2: { cellWidth: columnWidths[2] },
-                    3: { cellWidth: columnWidths[3] },
-                    4: { cellWidth: columnWidths[4] },
-                    5: { cellWidth: columnWidths[5] }
-                },
-                didDrawPage: function (data) {
-                    // Adiciona a largura da tabela ao PDF
-                    doc.setPage(data.pageCount);
-                    y = data.cursor.y + 10;
-                }
-            });
-
-            // Salva o PDF e faz o download
-            doc.save("pedidos.pdf");
-        });
-    </script>
 </body>
 
 </html>
