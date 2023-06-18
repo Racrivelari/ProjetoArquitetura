@@ -25,14 +25,14 @@
     <main class="MainLogin">
         <section id="lista-pedidos">
             <h2>Lista de Pedidos</h2>
-            <input type="text" id="buscar" placeholder="Buscar por pedido">
+            <input type="text" id="buscar" placeholder="Buscar por nome da usina ou do produto">
             <table>
                 <thead>
                     <tr>
                         <th>Número Pedido</th>
                         <th>Nome da Usina</th>
                         <th>Nome do Produto</th>
-                        <th>Quantidade</th>
+                        <th>Quantidade</th> 
                         <th>Preço</th>
                         <th>Destino</th>
                     </tr>
@@ -46,12 +46,13 @@
                         <td>{{quantidade}}</td>
                         <td>{{preco}}</td>
                         <td>{{destino}}</td>
+                        <td><button class="btn-editar" onclick="editarPedido('{{_id}}')">editar</button></td>
                         <td><button class="btn-excluir" onclick="excluirPedido('{{_id}}')">excluir</button></td>
                     </tr>
                     {{/pedidos}}
                 </tbody>
             </table>
-            <button id="btn-extrair-pdf" class="btn-extrair-pdf" onclick="exportToPdf()">Extrair PDF</button>
+            <button style="margin-top: 20px" id="btn-extrair-pdf" class="btn-extrair-pdf" onclick="exportToPdf()">Extrair PDF</button>
 
         </section>
         <form action="/pedidos/novoPedido" method="GET">
@@ -63,7 +64,7 @@
     <footer>
         <div></div>
     </footer>
-
+    
 </body>
 
 </html>

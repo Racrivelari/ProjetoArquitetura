@@ -10,26 +10,26 @@ function excluirPedido(id) {
         });
 }
 
-function searchTabela(){
+document.addEventListener("DOMContentLoaded", function() {
     const buscarInput = document.getElementById("buscar");
     const tabelaPedidos = document.getElementById("tabela-pedidos");
     const rows = tabelaPedidos.getElementsByTagName("tr");
-
-        buscarInput.addEventListener("input", function () {
-            const searchString = this.value.toLowerCase();
-
-            for (const row of rows) {
-                const usina = row.querySelector(".usina").textContent.toLowerCase();
-                const produto = row.querySelector(".produto").textContent.toLowerCase();
-
-                if (usina.includes(searchString) || produto.includes(searchString)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
-            }
-            });
-}
+  
+    buscarInput.addEventListener("input", function() {
+      const searchString = this.value.toLowerCase();
+  
+      for (const row of rows) {
+        const usina = row.querySelector(".usina").textContent.toLowerCase();
+        const produto = row.querySelector(".produto").textContent.toLowerCase();
+  
+        if (usina.includes(searchString) || produto.includes(searchString)) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      }
+    });
+  });
 
 function exportToPdf(){
         const tabelaPedidos = document.getElementById("tabela-pedidos");
