@@ -21,17 +21,17 @@ class PedidoController {
         try {
             await this.connection.connect();
             this.model = new PedidoModel(this.connection);
-            return(await this.model.readPedidos());
+            return (await this.model.readPedidos());
         } finally {
             this.connection.close();
         }
     }
 
-    async updatePedido(filter, update) {
+    async updatePedido(pedidoId, novoPedido) {
         try {
             await this.connection.connect();
             this.model = new PedidoModel(this.connection);
-            await this.model.updatePedido(filter, update);
+            await this.model.updatePedido(pedidoId, novoPedido);
         } finally {
             this.connection.close();
         }
@@ -49,13 +49,13 @@ class PedidoController {
 
     async findOne(query) {
         try {
-          await this.connection.connect();
-          this.model = new PedidoModel(this.connection);
-          return await this.model.findOne(query);
+            await this.connection.connect();
+            this.model = new PedidoModel(this.connection);
+            return await this.model.findOne(query);
         } finally {
-          this.connection.close();
+            this.connection.close();
         }
-      }
+    }
 }
 
 module.exports = PedidoController;

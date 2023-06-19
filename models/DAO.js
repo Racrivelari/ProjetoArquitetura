@@ -14,7 +14,6 @@ class DBConnection {
       await this.client.connect();
       this.database = this.client.db(""+ process.env.DATABASE_NAME);
       this.collection = this.database.collection("" + process.env.COLLECTION);
-      console.log("Conexão estabelecida com o MongoDB");
     } catch (error) {
       console.error("Erro ao conectar ao MongoDB:", error);
     }
@@ -22,7 +21,6 @@ class DBConnection {
 
   close() {
     this.client.close();
-    console.log("Conexão fechada com o MongoDB");
   }
 }
 

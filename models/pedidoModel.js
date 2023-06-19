@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 class PedidoModel {
     constructor(connection) {
         this.connection = connection;
@@ -17,21 +18,29 @@ class PedidoModel {
     async readPedidos() {
         try {
             const pedidos = await this.collection.find().toArray();
-            console.log('Pedidos encontrados:', pedidos);
-            return(pedidos)
+            return (pedidos)
         } catch (error) {
             console.error('Erro ao ler os pedidos:', error);
         }
     }
 
-    async updatePedido(filter, update) {
+
+
+    async updatePedido(pedidoId, novoPedido) {
         try {
-            const result = await this.collection.updateOne(filter, update);
-            console.log('Pedido atualizado:', result.modifiedCount);
+            
+            const query = { _id: new ObjectId(pedidoId) };
+            const update = { $set: novoPedido };
+            console.log(query)
+            const result = await this.collection.updateOne(query, update);
+            console.log('Pedido atualizado aaaaaaaaa:', result.modifiedCount);
         } catch (error) {
             console.error('Erro ao atualizar o pedido:', error);
+            throw error;
         }
     }
+
+
 
     async deletePedido(pedidoId) {
         try {
@@ -50,7 +59,7 @@ class PedidoModel {
         } catch (error) {
             console.error('Erro ao buscar', error);
         }
-      }
+    }
 }
 
 module.exports = PedidoModel;

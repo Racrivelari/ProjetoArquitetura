@@ -12,13 +12,7 @@ function excluirPedido(id) {
 
 function editarPedido(id) {
   console.log(id);
-  fetch(`/pedidos/editarPedido/${id}`, { method: "GET" })
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-          console.error(error);
-      });
+  window.location.href = `/pedidos/editarPedido/${id}`;
 }
 
 

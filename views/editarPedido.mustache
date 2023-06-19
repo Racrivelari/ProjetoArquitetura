@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetroNaka</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheet/novoPedido.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../stylesheet/novoPedido.css" />
 </head>
 
 <body>
     <header class="CabecalhoHome">
         <div class="Logo">
-            <img class="logo" src="../images/PetroNaka1.png" alt="...">
+            <img class="logo" src="../../images/PetroNaka1.png" alt="...">
         </div>
     </header>
 
@@ -19,9 +19,13 @@
 
     <main class="MainLogin">
         <div class="container">
-            <h2>Cadastro de Novo Pedido</h2>
-            <form action="/pedidos/editarPedido" method="PUT">
-                {{#pedido}}
+            <h2>Editar Pedido</h2>
+            <form action="/pedidos/editarPedido" method="post">
+                {{#pedidos}}
+                <div class="form-group">
+                    <label for="usina">ID:</label>
+                    <input type="text" id="id" name="id" value="{{_id}}" readonly>
+                </div>
                 <div class="form-group">
                     <label for="usina">Nome da Usina:</label>
                     <input type="text" id="usina" name="usina" value="{{usina}}" required>
@@ -45,7 +49,7 @@
                 <div class="form-group">
                     <button type="submit">Cadastrar</button>
                 </div>
-                {{/pedido}}
+                {{/pedidos}}
             </form>
         </div>
     </main>

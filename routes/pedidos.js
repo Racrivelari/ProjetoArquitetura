@@ -14,20 +14,19 @@ router.get('/novoPedido', (req, res) => {
 
 router.get('/editarPedido/:id', (req, res) => {
   const pedidoId = req.params.id;
-  const teste = new ObjectId(pedidoId); 
+  const teste = new ObjectId(pedidoId);
   pedidoController.findOne(teste)
-  .then((pedido) => {
-    console.log(pedido);
-    res.render('editarPedido', { pedido });
-  })
-  .catch((error) => {
-    res.status(500).json({ error: 'Ocorreu um erro ao excluir o pedido.' });
-  });
+    .then((pedidos) => {
+      res.render('editarPedido', { pedidos });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: 'Ocorreu um erro ao buscar o pedido.' });
+    });
 });
 
-router.put('/editarPedido', (req, res) => {
-  const { usina, produto, quantidade, preco, destino } = req.body;
-
+router.post('/editarPedido', (req, res) => {
+  const { id, usina, produto, quantidade, preco, destino } = req.body;
+  console.log(id)
   const novoPedido = {
     usina,
     produto,
@@ -37,32 +36,25 @@ router.put('/editarPedido', (req, res) => {
     timestamp: new Date().getTime(), // Adicionar o timestamp
   };
 
-  pedidoController.updatePedido(novoPedido)
+  pedidoController.updatePedido(id, novoPedido)
     .then(() => {
-     
-      pedidoController.readPedidos()
-        .then((pedidos) => {
-          res.render('pedidos', { pedidos });
-        })
-        .catch((error) => {
-          res.status(500).json({ error: 'Ocorreu um erro ao obter a lista de pedidos.' });
-        });
+      res.redirect('/pedidos');
     })
     .catch((error) => {
-      res.status(500).json({ error: 'Ocorreu um erro ao cadastrar o pedido.' });
+      res.status(500).json({ error: 'Ocorreu um erro ao atualizar o pedido.' });
     });
 });
 
 router.delete('/:id', (req, res) => {
   const pedidoId = req.params.id;
-  const teste = new ObjectId(pedidoId); 
+  const teste = new ObjectId(pedidoId);
 
   pedidoController.deletePedido(teste)
     .then((result) => {
-      res.status(200).json({result: result + "Pedido deletado."});
+      res.status(200).json({ result: result + "Pedido deletado." });
     })
     .catch((error) => {
-      res.status(500).json({ error: error +'Ocorreu um erro ao excluir o pedido.' });
+      res.status(500).json({ error: error + 'Ocorreu um erro ao excluir o pedido.' });
     });
 });
 
@@ -80,13 +72,7 @@ router.post('/', (req, res) => {
 
   pedidoController.createPedido(novoPedido)
     .then(() => {
-      pedidoController.readPedidos()
-        .then((pedidos) => {
-          res.render('pedidos', { pedidos });
-        })
-        .catch((error) => {
-          res.status(500).json({ error: 'Ocorreu um erro ao obter a lista de pedidos.' });
-        });
+      res.redirect('/pedidos');
     })
     .catch((error) => {
       res.status(500).json({ error: 'Ocorreu um erro ao cadastrar o pedido.' });
