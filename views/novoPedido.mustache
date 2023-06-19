@@ -26,9 +26,14 @@
                     <input type="text" id="usina" name="usina" required>
                 </div>
                 <div class="form-group">
-                    <label for="produto">Nome do Produto:</label>
-                    <input type="text" id="produto" name="produto" required>
+                    <label for="produto">Produto:</label>
+                    <select id="produto" name="produto" required>
+                        {{#produtos}}
+                        <option value="{{nome}}">{{nome}}</option>
+                        {{/produtos}}
+                    </select>
                 </div>
+
                 <div class="form-group">
                     <label for="quantidade">Quantidade:</label>
                     <input type="text" id="quantidade" name="quantidade" required>

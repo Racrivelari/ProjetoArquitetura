@@ -15,7 +15,7 @@ const authenticateToken = (req, res, next) => {
     req.user = {
       clienteId: decoded.clienteId
     };
-    console.log("aAAA" + decoded.clienteId)
+    console.log(decoded)
     next();
   });
 };

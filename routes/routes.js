@@ -78,7 +78,6 @@ router.get('/contato', (req, res) => {
 
 router.get('/pedidos', auth, async(req, res) => {
   const clienteId = req.user.clienteId;
-  console.log(clienteId);
   pedido.readPedidos(clienteId)
     .then((pedidos) => {
       res.render('pedidos', { pedidos });

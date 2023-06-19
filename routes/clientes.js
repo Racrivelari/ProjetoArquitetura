@@ -34,12 +34,10 @@ router.post('/loginCliente', async (req, res) => {
 
   try {
     const user = await clienteController.findOne({ email, senha });
-    console.log(user);
 
     if (user) {
-      const token = jwt.sign({ clienteId: user.clienteId }, process.env.JWT_SENHA, { expiresIn: '10m' });
+      const token = jwt.sign({ clienteId: user._id }, process.env.JWT_SENHA, { expiresIn: '10m' });
       // const token = jwt.sign({ timestamp: user.timestamp }, process.env.JWT_SENHA, { expiresIn: '10m' });
-      console.log(token);
       res.cookie('token', token, { httpOnly: true });
       // res.redirect('/produtos');
       res.redirect('/pedidos');

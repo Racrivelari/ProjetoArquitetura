@@ -30,10 +30,19 @@
                     <label for="usina">Nome da Usina:</label>
                     <input type="text" id="usina" name="usina" value="{{usina}}" required>
                 </div>
+                {{/pedidos}}
                 <div class="form-group">
-                    <label for="produto">Nome do Produto:</label>
-                    <input type="text" id="produto" name="produto" value="{{produto}}" required>
+                    <label for="produto">Produto:</label>
+                    <select id="produto" name="produto" required>
+                        {{#produto}}
+                        <option value="{{nome}}">{{nome}}</option>
+                        {{/produto}}
+                        {{#produtos}}
+                        <option value="{{nome}}">{{nome}}</option>
+                        {{/produtos}}
+                    </select>
                 </div>
+                {{#pedidos}}
                 <div class="form-group">
                     <label for="quantidade">Quantidade:</label>
                     <input type="text" id="quantidade" name="quantidade" value="{{quantidade}}" required>
@@ -50,6 +59,7 @@
                     <button type="submit">Editar</button>
                 </div>
                 {{/pedidos}}
+
             </form>
         </div>
     </main>
@@ -57,6 +67,8 @@
     <footer>
         <div></div>
     </footer>
+    <!-- Seu HTML existente aqui -->
+
 </body>
 
 </html>
