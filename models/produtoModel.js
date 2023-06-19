@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 class ProdutoModel {
     constructor(connection) {
         this.connection = connection;
@@ -24,12 +25,17 @@ class ProdutoModel {
         }
     }
 
-    async updateProduto(filter, update) {
+   async updateProduto(produtoId, novoProduto) {
         try {
-            const result = await this.collection.updateOne(filter, update);
-            console.log('Produto atualizado:', result.modifiedCount);
+            
+            const query = { _id: new ObjectId(produtoId) };
+            const update = { $set: novoProduto };
+            console.log(query)
+            const result = await this.collection.updateOne(query, update);
+            console.log('Produto atualizado :', result.modifiedCount);
         } catch (error) {
             console.error('Erro ao atualizar o produto:', error);
+            throw error;
         }
     }
 
@@ -39,6 +45,15 @@ class ProdutoModel {
             console.log('Produto removido:', result.deletedCount);
         } catch (error) {
             console.error('Erro ao remover o produto:', error);
+        }
+    }
+
+    async findOne(query) {
+        try {
+            const result = await this.collection.findOne(query);
+            return (result);
+        } catch (error) {
+            console.error('Erro ao buscar', error);
         }
     }
 }

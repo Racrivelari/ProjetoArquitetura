@@ -40,7 +40,8 @@ router.post('/loginCliente', async (req, res) => {
       const token = jwt.sign({ clienteId: user.clienteId }, process.env.JWT_SENHA, { expiresIn: '1h' });
       console.log(token);
       res.cookie('token', token, { httpOnly: true });
-      res.redirect('/pedidos');
+      res.redirect('/produtos');
+      // res.redirect('/pedidos');
     } else {
       res.status(400).json({ error: 'Email ou senha inválidos' });
     }

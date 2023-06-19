@@ -89,11 +89,9 @@ router.get('/pedidos', auth, async(req, res) => {
 router.get('/produtos', auth,  async(req, res) => {
   produto.readProdutos()
     .then((produtos) => {
-      // Renderizar a página de listagem de produtos com os dados recebidos
       res.render('produtos', { produtos });
     })
     .catch((error) => {
-      // Ocorreu um erro ao obter a lista de produtos
       res.status(500).json({ error: 'Ocorreu um erro ao obter a lista de produtos.' });
     });
 });

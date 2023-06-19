@@ -27,11 +27,11 @@ class ProdutoController {
     }
   }
 
-  async updateProduto(filter, update) {
+  async updateProduto(produtoId, novoProduto) {
     try {
       await this.connection.connect();
       this.model = new ProdutoModel(this.connection);
-      await this.model.updateProduto(filter, update);
+      await this.model.updateProduto(produtoId, novoProduto);
     } finally {
       this.connection.close();
     }
@@ -46,6 +46,16 @@ class ProdutoController {
       this.connection.close();
     }
   }
+
+  async findOne(query) {
+    try {
+        await this.connection.connect();
+        this.model = new ProdutoModel(this.connection);
+        return await this.model.findOne(query);
+    } finally {
+        this.connection.close();
+    }
+}
 }
 
 module.exports = ProdutoController;

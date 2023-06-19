@@ -24,8 +24,6 @@ class PedidoModel {
         }
     }
 
-
-
     async updatePedido(pedidoId, novoPedido) {
         try {
             
@@ -33,14 +31,12 @@ class PedidoModel {
             const update = { $set: novoPedido };
             console.log(query)
             const result = await this.collection.updateOne(query, update);
-            console.log('Pedido atualizado aaaaaaaaa:', result.modifiedCount);
+            console.log('Pedido atualizado :', result.modifiedCount);
         } catch (error) {
             console.error('Erro ao atualizar o pedido:', error);
             throw error;
         }
     }
-
-
 
     async deletePedido(pedidoId) {
         try {

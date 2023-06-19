@@ -10,6 +10,11 @@ function excluirProduto(id) {
         });
 }
 
+function editarProduto(id) {
+  console.log(id);
+  window.location.href = `/produtos/editarProduto/${id}`;
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     const buscarInput = document.getElementById("buscar");
     const tabelaProdutos = document.getElementById("tabela-produtos");
