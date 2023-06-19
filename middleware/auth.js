@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const authenticateToken = (req, res, next) => {
-    const token = req.cookies.token;
+  const token = req.cookies.token;
 
   if (!token) {
     return res.status(401).json({ error: 'Token não fornecido' });
@@ -12,7 +12,7 @@ const authenticateToken = (req, res, next) => {
       return res.status(403).json({ error: 'Token inválido' });
     }
 
-    req.user = decoded;
+    req.clienteId = decoded.clienteId;
     next();
   });
 };

@@ -3,9 +3,8 @@ const router = express.Router();
 const { ObjectId } = require('mongodb');
 const PedidoController = require('../controller/pedidoController');
 const pedidoController = new PedidoController();
-const authenticateToken = require('../middleware/auth');
-
-router.use(authenticateToken);
+const auth = require('../middleware/auth')
+router.use(auth);
 router.get('/', (req, res) => {
 
 });

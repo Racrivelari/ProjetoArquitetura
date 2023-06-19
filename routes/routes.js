@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 require('dotenv').config();
+const auth = require('../middleware/auth')
 
 const nodemailer = require('nodemailer');
 
@@ -75,7 +76,7 @@ router.get('/contato', (req, res) => {
   res.render('contato');
 });
 
-router.get('/pedidos', (req, res) => {
+router.get('/pedidos', auth, async(req, res) => {
   pedido.readPedidos()
     .then((pedidos) => {
       res.render('pedidos', { pedidos });
@@ -85,7 +86,7 @@ router.get('/pedidos', (req, res) => {
     });
 });
 
-router.get('/produtos', (req, res) => {
+router.get('/produtos', auth,  async(req, res) => {
   produto.readProdutos()
     .then((produtos) => {
       // Renderizar a página de listagem de produtos com os dados recebidos

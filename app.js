@@ -4,8 +4,8 @@ require('dotenv').config();
 var path = require('path');
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
-
-
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 const mustacheExpress = require('mustache-express');
 
