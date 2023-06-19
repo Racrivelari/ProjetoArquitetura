@@ -17,11 +17,11 @@ class PedidoController {
         }
     }
 
-    async readPedidos() {
+    async readPedidos(clienteId) {
         try {
             await this.connection.connect();
             this.model = new PedidoModel(this.connection);
-            return (await this.model.readPedidos());
+            return (await this.model.readPedidos(clienteId));
         } finally {
             this.connection.close();
         }

@@ -12,7 +12,10 @@ const authenticateToken = (req, res, next) => {
       return res.status(403).json({ error: 'Token inválido' });
     }
 
-    req.clienteId = decoded.clienteId;
+    req.user = {
+      clienteId: decoded.clienteId
+    };
+    console.log("aAAA" + decoded.clienteId)
     next();
   });
 };

@@ -15,18 +15,18 @@ class PedidoModel {
         }
     }
 
-    async readPedidos() {
+    async readPedidos(clienteId) {
         try {
-            const pedidos = await this.collection.find().toArray();
-            return (pedidos)
+          const pedidos = await this.collection.find({ clienteId }).toArray();
+          return pedidos;
         } catch (error) {
-            console.error('Erro ao ler os pedidos:', error);
+          console.error('Erro ao ler os pedidos:', error);
         }
-    }
+      }
+      
 
     async updatePedido(pedidoId, novoPedido) {
         try {
-            
             const query = { _id: new ObjectId(pedidoId) };
             const update = { $set: novoPedido };
             console.log(query)
