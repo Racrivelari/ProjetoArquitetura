@@ -19,7 +19,7 @@
 
     <main class="MainLogin">
         <div class="container">
-            <h2>Cadastro de Novo Pedido</h2>
+            <h2>Edição de Pedido</h2>
             <form action="/pedidos/editarPedido" method="PUT">
                 {{#pedido}}
                 <div class="form-group">
@@ -43,7 +43,7 @@
                     <input type="text" id="destino" name="destino" value="{{destino}}" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit">Cadastrar</button>
+                    <button type="submit">Editar</button>
                 </div>
                 {{/pedido}}
             </form>
