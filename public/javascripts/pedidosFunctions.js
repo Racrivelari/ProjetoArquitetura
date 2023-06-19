@@ -10,6 +10,18 @@ function excluirPedido(id) {
         });
 }
 
+function editarPedido(id) {
+  console.log(id);
+  fetch(`/pedidos/editarPedido/${id}`, { method: "GET" })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+          console.error(error);
+      });
+}
+
+
 document.addEventListener("DOMContentLoaded", function() {
     const buscarInput = document.getElementById("buscar");
     const tabelaPedidos = document.getElementById("tabela-pedidos");

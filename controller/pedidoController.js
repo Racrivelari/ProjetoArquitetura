@@ -46,6 +46,16 @@ class PedidoController {
             this.connection.close();
         }
     }
+
+    async findOne(query) {
+        try {
+          await this.connection.connect();
+          this.model = new PedidoModel(this.connection);
+          return await this.model.findOne(query);
+        } finally {
+          this.connection.close();
+        }
+      }
 }
 
 module.exports = PedidoController;

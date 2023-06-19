@@ -20,30 +20,32 @@
     <main class="MainLogin">
         <div class="container">
             <h2>Cadastro de Novo Pedido</h2>
-            <form action="/pedidos/novoPedido" method="POST">
+            <form action="/pedidos/editarPedido" method="PUT">
+                {{#pedido}}
                 <div class="form-group">
-                    <label for="nome">Nome da Usina:</label>
-                    <input type="text" id="usina" name="usina" required>
+                    <label for="usina">Nome da Usina:</label>
+                    <input type="text" id="usina" name="usina" value="{{usina}}" required>
                 </div>
                 <div class="form-group">
                     <label for="produto">Nome do Produto:</label>
-                    <input type="text" id="produto" name="produto" required>
+                    <input type="text" id="produto" name="produto" value="{{produto}}" required>
                 </div>
                 <div class="form-group">
                     <label for="quantidade">Quantidade:</label>
-                    <input type="text" id="quantidade" name="quantidade" required>
+                    <input type="text" id="quantidade" name="quantidade" value="{{quantidade}}" required>
                 </div>
                 <div class="form-group">
                     <label for="preco">Preço:</label>
-                    <input type="text" id="preco" name="preco" required>
+                    <input type="text" id="preco" name="preco" value="{{preco}}" required>
                 </div>
                 <div class="form-group">
                     <label for="destino">Destino:</label>
-                    <input type="text" id="destino" name="destino" required>
+                    <input type="text" id="destino" name="destino" value="{{destino}}" required>
                 </div>
                 <div class="form-group">
                     <button type="submit">Cadastrar</button>
                 </div>
+                {{/pedido}}
             </form>
         </div>
     </main>

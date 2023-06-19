@@ -78,11 +78,9 @@ router.get('/contato', (req, res) => {
 router.get('/pedidos', (req, res) => {
   pedido.readPedidos()
     .then((pedidos) => {
-      // Renderizar a página de listagem de pedidos com os dados recebidos
       res.render('pedidos', { pedidos });
     })
     .catch((error) => {
-      // Ocorreu um erro ao obter a lista de pedidos
       res.status(500).json({ error: 'Ocorreu um erro ao obter a lista de pedidos.' });
     });
 });

@@ -42,6 +42,15 @@ class PedidoModel {
             console.error('Erro ao remover o pedido:', error);
         }
     }
+
+    async findOne(query) {
+        try {
+            const result = await this.collection.findOne(query);
+            return (result);
+        } catch (error) {
+            console.error('Erro ao buscar', error);
+        }
+      }
 }
 
 module.exports = PedidoModel;
