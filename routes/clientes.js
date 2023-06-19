@@ -37,7 +37,7 @@ router.post('/loginCliente', async (req, res) => {
     console.log(user);
 
     if (user) {
-      const token = jwt.sign({ clienteId: user.clienteId }, process.env.JWT_SENHA, { expiresIn: '1h' });
+      const token = jwt.sign({ clienteId: user.clienteId }, process.env.JWT_SENHA, { expiresIn: '10m' });
       console.log(token);
       res.cookie('token', token, { httpOnly: true });
       res.redirect('/produtos');

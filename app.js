@@ -24,10 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-// Associar o roteador às rotas principais
-// app.use('/', routes);
-
 app.use('/', routes);
 app.use('/produtos', produtosRoute);
 app.use('/pedidos', pedidosRoute);
