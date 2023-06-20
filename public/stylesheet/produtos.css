@@ -40,6 +40,24 @@ nav ul li a {
 }
 
 .linha-amarela {
+  height: 4.5px;
+  background-color: #D4AF37;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #D4AF37;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.linha-amarela {
     height: 4.5px;
     background-color: #D4AF37;
 }
@@ -93,18 +111,6 @@ footer{
     bottom: 0;
     width: 100%;
 }
-nav ul {
-  display: flex;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #D4AF37;
-  padding: 20px;
-  font-family: 'Arial', sans-serif;
-  font-weight: bold;
-  font-size: 18px;
-}
 
 input{
     display: flex;
@@ -121,6 +127,7 @@ input{
   margin-right: 40px;
   font-family: 'Arial', sans-serif;
 }
+
   #lista-pedidos {
     margin: 0 auto;
     max-width: 900px;

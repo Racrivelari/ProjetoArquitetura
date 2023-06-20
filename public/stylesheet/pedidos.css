@@ -3,45 +3,58 @@
 }
 
 .CabecalhoHome {
-  font-family: 'Averia Libre';
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 10px solid black;
-  padding-bottom: 20px;
+    font-family: 'Averia Libre';
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid black;
+    padding-bottom: 20px;
 }
 
 .logo {
-  width: 300px;
-  margin-bottom: 20px;
+    width: 300px;
+    margin-bottom: 20px;
 }
 
 nav {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 nav ul {
-  display: flex;
-  align-items: center;
-  padding: 0;
-  margin: 0;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
 nav ul li a {
-  text-decoration: none;
-  color: #D4AF37;
-  padding: 10px;
-  font-family: 'Arial', sans-serif;
-  font-weight: bold;
-  font-size: 14px;
+    text-decoration: none;
+    color: #D4AF37;
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .linha-amarela {
     height: 4.5px;
     background-color: #D4AF37;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #D4AF37;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 footer{
@@ -74,7 +87,7 @@ input{
   
   #lista-pedidos {
     margin: 0 auto;
-    max-width: 900px;
+    max-width: 1300px;
   }
   
   h2 {
@@ -180,17 +193,4 @@ button {
   cursor: pointer;
   font-weight: bold;
   font-size: 15px;
-}
-
-nav ul {
-  display: flex;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #D4AF37;
-  padding: 20px;
-  font-family: 'Arial', sans-serif;
-  font-weight: bold;
-  font-size: 18px;
 }
