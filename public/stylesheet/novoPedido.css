@@ -19,6 +19,19 @@
     height: 4.5px;
     background-color: #D4AF37;
 }
+nav ul {
+    display: flex;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #D4AF37;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
 
 footer {
     font-family: 'Averia Libre';
@@ -28,6 +41,9 @@ footer {
     align-items: center;
     border: 10px solid black;
     height: 39px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .container {

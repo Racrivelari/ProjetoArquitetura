@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const ClienteController = require('../controller/clienteController');
 const clienteController = new ClienteController();
 
+
 router.get('/novoCliente', (req, res) => {
   res.render('novoCliente');
 });
@@ -27,7 +28,6 @@ router.post('/novoCliente', (req, res) => {
     });
 });
 
-
 router.post('/loginCliente', async (req, res) => {
   const email = req.body.email;
   const senha = req.body.senha;
@@ -37,10 +37,8 @@ router.post('/loginCliente', async (req, res) => {
 
     if (user) {
       const token = jwt.sign({ clienteId: user._id }, process.env.JWT_SENHA, { expiresIn: '10m' });
-      // const token = jwt.sign({ timestamp: user.timestamp }, process.env.JWT_SENHA, { expiresIn: '10m' });
       res.cookie('token', token, { httpOnly: true });
-      // res.redirect('/produtos');
-      res.redirect('/pedidos');
+      res.redirect('/home');
     } else {
       res.status(400).json({ error: 'Email ou senha inválidos' });
     }

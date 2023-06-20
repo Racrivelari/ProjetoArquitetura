@@ -29,6 +29,21 @@ footer{
     align-items: center;
     border: 10px solid black;
     height: 39px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+nav ul {
+  display: flex;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #D4AF37;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 input{
@@ -44,6 +59,10 @@ input{
     margin-top: 20px;
     font-family: 'Arial', sans-serif; 
   }
+
+.logout-a{
+  color: red;
+}
   
   #lista-pedidos {
     margin: 0 auto;

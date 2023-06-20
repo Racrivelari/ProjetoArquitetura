@@ -49,7 +49,7 @@ router.post('/email', (req, res) => {
 //
 
 router.get('/', (req, res) => {
-  res.render('home')
+  res.render('login')
 });
 
 router.get('/sobre', (req, res) => {
@@ -62,10 +62,6 @@ router.get('/negocio', (req, res) => {
 
 router.get('/somos', (req, res) => {
   res.render('somos')
-});
-
-router.get('/login', (req, res) => {
-  res.render('login')
 });
 
 router.get('/novaConta', (req, res) => {
@@ -96,5 +92,15 @@ router.get('/produtos', auth,  async(req, res) => {
       res.status(500).json({ error: 'Ocorreu um erro ao obter a lista de produtos.' });
     });
 });
+
+router.get('/home', auth, async(req, res) => {
+  res.render('home')
+});
+
+router.get('/logout', auth, async(req, res) => {
+  res.clearCookie('token');
+  res.redirect('/');
+});
+
 
 module.exports = router;

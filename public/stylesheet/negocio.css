@@ -72,4 +72,7 @@ footer{
     align-items: center;
     border: 10px solid black;
     height: 39px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

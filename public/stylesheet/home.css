@@ -34,12 +34,14 @@ nav ul li a {
 }
 
 .logoFooter {
-    width: 1200px;
-    height: 570px;
-    display:flex;
-    margin: auto;
+    width: 50%;
+    margin-top:5%;
 }
-
+.LogoFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 footer{
     font-family: 'Averia Libre';
     background-color: black;
@@ -48,4 +50,7 @@ footer{
     align-items: center;
     border: 10px solid black;
     height: 39px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

@@ -50,7 +50,7 @@ class ProdutoModel {
 
     async findOne(query) {
         try {
-            const result = await this.collection.findOne({nome : query});
+            const result = await this.collection.findOne(query);
             return (result);
         } catch (error) {
             console.error('Erro ao buscar', error);

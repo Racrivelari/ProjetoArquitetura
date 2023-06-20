@@ -20,6 +20,7 @@ router.get('/editarProduto/:id', (req, res) => {
   const teste = new ObjectId(produtoId);
   produtoController.findOne(teste)
     .then((produtos) => {
+      console.log(produtos);
       res.render('editarProduto', { produtos });
     })
     .catch((error) => {

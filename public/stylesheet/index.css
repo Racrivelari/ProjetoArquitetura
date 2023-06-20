@@ -1,5 +1,6 @@
-*{
+* {
     margin: 0;
+    padding: 0;
 }
 
 .CabecalhoHome {
@@ -9,7 +10,7 @@
     justify-content: space-between;
     align-items: center;
     border: 10px solid black;
-  }
+}
 
 .logo {
     width: 300px;
@@ -33,41 +34,20 @@ nav ul li a {
     font-size: 18px;
 }
 
-.MainSobre {
-    max-width: 700px;
-    margin: 0 auto;
-    border: 6px solid #D4AF37;
-    border-radius: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-  }
-
-.sobre1,
-.sobre2,
-.sobre3 {
-    text-decoration: none;
-    color: black;
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    text-align: center;
+.logoFooter {
+    width: 50%;
+    margin-top:5%;
 }
 
-.imageSobre {
-    width: 273px;
-    height: 273px;
-    display:flex;
-    margin: auto;
+.LogoFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-footer{
+footer {
     font-family: 'Averia Libre';
     background-color: black;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     border: 10px solid black;
     height: 39px;
     position: fixed;
