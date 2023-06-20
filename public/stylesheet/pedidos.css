@@ -3,7 +3,6 @@
 }
 
 .CabecalhoHome {
-<<<<<<< HEAD
   font-family: 'Averia Libre';
   background-color: black;
   display: flex;
@@ -12,20 +11,6 @@
   align-items: center;
   border: 10px solid black;
   padding-bottom: 20px;
-=======
-    font-family: 'Averia Libre';
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 10px solid black;
-  }
-
-.logo {
-    width: 300px;
-    margin-bottom: 12px;
-
->>>>>>> 4494a736394aad160bbddec24b9e1af496751423
 }
 
 .logo {
