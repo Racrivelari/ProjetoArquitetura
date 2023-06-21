@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetroNaka</title>
     <link rel="stylesheet" type="text/css" media="screen" href="../stylesheet/produtos.css" />
+    <link rel="icon" href="../images/leao.png" type="image/x-icon">
 </head>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
@@ -44,11 +45,11 @@
                  <tbody id="tabela-produtos">
                     {{#produtos}}
                     <tr class="produto">
-                        <td>{{_id}}</td>
+                        <td class="id">{{_id}}</td>
                         <td class="nome">{{nome}}</td>
                         <td class="medida">{{medida}}</td>
-                        <td><button class="btn-editar" onclick="editarProduto('{{_id}}')">editar</button></td>
-                        <td><button class="btn-excluir" onclick="excluirProduto('{{_id}}')">excluir</button></td>
+                        <td><button class="btn-editar" onclick="editarProduto('{{_id}}', '{{nome}}')">editar</button></td>
+                        <td><button class="btn-excluir" onclick="excluirProduto('{{_id}}', '{{nome}}')">excluir</button></td>
                     </tr>
                     {{/produtos}}
                 </tbody>

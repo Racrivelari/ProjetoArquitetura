@@ -37,11 +37,31 @@ class PedidoController {
         }
     }
 
+    async updatePedidoProduto(nome, novoproduto) {
+        try {
+            await this.connection.connect();
+            this.model = new PedidoModel(this.connection);
+            await this.model.updatePedidoProduto(nome, novoproduto);
+        } finally {
+            this.connection.close();
+        }
+    }
+
     async deletePedido(filter) {
         try {
             await this.connection.connect();
             this.model = new PedidoModel(this.connection);
             await this.model.deletePedido(filter);
+        } finally {
+            this.connection.close();
+        }
+    }
+
+    async deletePedidoProduto(nome) {
+        try {
+            await this.connection.connect();
+            this.model = new PedidoModel(this.connection);
+            await this.model.deletePedidoProduto(nome);
         } finally {
             this.connection.close();
         }

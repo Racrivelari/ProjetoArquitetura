@@ -28,19 +28,20 @@ router.get('/editarPedido/:id', (req, res) => {
   const teste = new ObjectId(pedidoId);
   pedidoController.findOne(teste)
     .then((pedidos) => {
-      produtoController.findOne(pedidos.produto)
+      produtoController.findOnenome(pedidos.produto)
         .then((produto) => {
           produtoController.readProdutos()
             .then((produtos) => {
+              console.log(pedidos.produto)
               produtos = produtos.filter((produtos) => produtos.nome !== produto.nome);
               res.render('editarPedido', { pedidos: pedidos, produto: produto, produtos: produtos });
             })
             .catch((error) => {
-              res.status(500).json({ error: 'Ocorreu um erro ao buscar o produto.' });
+              res.status(500).json({ error: error + 'Ocorreu um erro ao buscar o produto.asd' });
             });
         })
         .catch((error) => {
-          res.status(500).json({ error: 'Ocorreu um erro ao buscar o produto.' });
+          res.status(500).json({ error: 'Ocorreu um erro ao buscar o produto123.' });
         });
     })
     .catch((error) => {

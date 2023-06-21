@@ -1,7 +1,7 @@
 
-function excluirProduto(id) {
+function excluirProduto(id, nome) {
     console.log(id);
-    fetch(`/produtos/${id}`, { method: "DELETE" })
+    fetch(`/produtos/${id}/${nome}`, { method: "DELETE" })
         .then(() => {
             location.href = location.href;
         })
@@ -11,7 +11,7 @@ function excluirProduto(id) {
 }
 
 function editarProduto(id) {
-  console.log(id);
+
   window.location.href = `/produtos/editarProduto/${id}`;
 }
 

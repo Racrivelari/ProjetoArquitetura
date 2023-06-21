@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetroNaka</title>
     <link rel="stylesheet" type="text/css" media="screen" href="../../stylesheet/novoProduto.css" />
+    <link rel="icon" href="../images/leao.png" type="image/x-icon">
 </head>
 
 <body>
@@ -42,6 +43,7 @@
                     <input type="text" id="medida" name="medida" value="{{medida}}" required>
                 </div>
                 <div class="form-group">
+                    <input type="hidden" name="produtoAntigo" value="{{nome}}">
                     <button type="submit">Editar</button>
                 </div>
                 {{/produtos}}

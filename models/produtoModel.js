@@ -18,7 +18,6 @@ class ProdutoModel {
     async readProdutos() {
         try {
             const produtos = await this.collection.find().toArray();
-            console.log('Produtos encontrados:', produtos);
             return(produtos)
         } catch (error) {
             console.error('Erro ao ler os produtos:', error);
@@ -30,9 +29,7 @@ class ProdutoModel {
             
             const query = { _id: new ObjectId(produtoId) };
             const update = { $set: novoProduto };
-            console.log(query)
             const result = await this.collection.updateOne(query, update);
-            console.log('Produto atualizado :', result.modifiedCount);
         } catch (error) {
             console.error('Erro ao atualizar o produto:', error);
             throw error;
@@ -50,7 +47,16 @@ class ProdutoModel {
 
     async findOne(query) {
         try {
-            const result = await this.collection.findOne({nome: query});
+            const result = await this.collection.findOne({_id : query});
+            return (result);
+        } catch (error) {
+            console.error('Erro ao buscar', error);
+        }
+    }
+
+    async findOnenome(query) {
+        try {
+            const result = await this.collection.findOne({nome : query});
             return (result);
         } catch (error) {
             console.error('Erro ao buscar', error);

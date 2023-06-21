@@ -21,9 +21,9 @@ class ProdutoController {
     try {
       await this.connection.connect();
       this.model = new ProdutoModel(this.connection);
-      return(await this.model.readProdutos());
+      return (await this.model.readProdutos());
     } finally {
-      this.connection.close();
+      await this.connection.close();
     }
   }
 
@@ -49,13 +49,23 @@ class ProdutoController {
 
   async findOne(query) {
     try {
-        await this.connection.connect();
-        this.model = new ProdutoModel(this.connection);
-        return await this.model.findOne(query);
+      await this.connection.connect();
+      this.model = new ProdutoModel(this.connection);
+      return await this.model.findOne(query);
     } finally {
-        this.connection.close();
+      this.connection.close();
     }
-}
+  }
+
+  async findOnenome(query) {
+    try {
+      await this.connection.connect();
+      this.model = new ProdutoModel(this.connection);
+      return await this.model.findOnenome(query);
+    } finally {
+      this.connection.close();
+    }
+  }
 }
 
 module.exports = ProdutoController;

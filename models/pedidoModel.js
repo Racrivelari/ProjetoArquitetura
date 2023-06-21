@@ -38,10 +38,31 @@ class PedidoModel {
         }
     }
 
+    async updatePedidoProduto(nome, novoprod) {
+        try {
+          const query = { produto: nome };
+          const update = { $set: { produto: novoprod } };
+          const result = await this.collection.updateMany(query, update);
+          console.log('Pedidos atualizados:', result.modifiedCount);
+        } catch (error) {
+          console.error('Erro ao atualizar os pedidos:', error);
+          throw error;
+        }
+      }
+
     async deletePedido(pedidoId) {
         try {
             const result = await this.collection.deleteOne({ _id: pedidoId });
             console.log(pedidoId)
+            console.log('Pedido removido:', result.deletedCount);
+        } catch (error) {
+            console.error('Erro ao remover o pedido:', error);
+        }
+    }
+
+    async deletePedidoProduto(nome) {
+        try {
+            const result = await this.collection.deleteMany({ produto: nome });
             console.log('Pedido removido:', result.deletedCount);
         } catch (error) {
             console.error('Erro ao remover o pedido:', error);
